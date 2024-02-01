@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <main class="container">
+        {% if cart|length > 0 %}
+            <aside class="col-12 border border-light bg-dark p-2">
+                {# <article class="card mb-3"> #}
+                    <div class="card-header">
+                        <h1>
+                            Mon panier
+                        </h1>
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Total</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% set total = null %}
+                                {% for element in cart %}
+                                    {% set total = (element.formedeboxe.prix ) %}
+                                    <tr>
+                                        <td>
+                                        <td>{{ element.formedeboxe.prix }}
+                                            €</td>
+                                        <td>
+                                            {# <a href="{{path('cart_remove', {id: element.formedeboxe.id}) }}" class="btn btn-danger">Supprimer</a> #}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+
+                                </tbody>
+                        </table>
+                        <a href="#" class="btn btn-dark">Valider le Panier</a>
+                        <a href="{{path('cart_removeAll')}}" class="btn btn-dark">
+                            Supprimer tout mon panier
+                        </a>
+
+                    </div>
+                </article>
+            </aside>
+        </main>
+    {% else %}
+        <div class="container">
+            <div class="col-12 border border-light bg-dark p-2">
+                {# <div class="card mb-3"> #}
+                    <div class="card-header">
+                        <h1>
+                            Votre panier est vide</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	
+	{{ formedeboxe.nom}}
+{% endblock %}
+
+{% block body %}
+	<main class="container">
+		<section class="row">
+			<div class="col-12">
+				<h1>
+					
+	                {{ formedeboxe.nom}}
+				</h1>
+
+			</div>
+			<div class="col-6">
+				<div class="carousel-inner">
+
+					<img src="/image/{{ formedeboxe.photo }}" class="card-img-top" alt="{{ formedeboxe.photo}}">
+				</div>
+
+			</div>
+			<div class="col-6">
+				<p>
+					
+	                {{ formedeboxe.nom}}
+				</p>
+				<p>
+					{{ formedeboxe.description }}
+				</p>
+
+				<p>
+					Prix :
+					{{ formedeboxe.prix }}€
+				</p>
+
+				{% if formedeboxe.prix > 0 %}
+					<a href="{{path('cart_add', {id: formedeboxe.id}) }}" class="btn btn-danger">
+						Ajouter au panier
+					</a> 
+				{% endif %}
+				{% if formedeboxe.prix < 0  %}
+					<p class="text-warning">
+						Temporairement en rupture de stock
+					</p>
+				{% endif %}
+
+			</div>
+
+	</section>
+</main>
+{% endblock %}
